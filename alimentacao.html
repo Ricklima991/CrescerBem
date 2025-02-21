@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimentação Saudável - CrescerBem</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .content-section {
+            padding: 120px 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .resource-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .resource-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .resource-link {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .resource-link:hover {
+            background: var(--secondary-color);
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, #E5FFE5, #D1FFD1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2ECC71;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 
+                5px 5px 15px rgba(46, 204, 113, 0.2),
+                -5px -5px 15px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            border: none;
+            cursor: pointer;
+        }
+        .back-button:hover {
+            transform: translateY(-5px) rotate(-45deg);
+            background: linear-gradient(145deg, #D1FFD1, #B7FFB7);
+            color: #27AE60;
+            box-shadow: 
+                8px 8px 20px rgba(46, 204, 113, 0.3),
+                -8px -8px 20px rgba(255, 255, 255, 0.9);
+        }
+        .back-button:active {
+            transform: translateY(0) rotate(0deg);
+            box-shadow: inset 2px 2px 5px rgba(46, 204, 113, 0.2);
+        }
+        .back-button i {
+            transition: all 0.3s ease;
+        }
+        .back-button:hover i {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+    <main class="content-section">
+        <h1>Alimentação Saudável</h1>
+        <p>Descubra as melhores práticas e recursos para a alimentação do seu filho.</p>
+
+        <div class="resource-card">
+            <h3>Sociedade Brasileira de Pediatria</h3>
+            <p>Guias oficiais e recomendações nutricionais para cada fase do desenvolvimento infantil.</p>
+            <a href="https://www.sbp.com.br/departamentos-cientificos/nutricao/" target="_blank" class="resource-link">Acessar Guias</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>Ministério da Saúde - Guia Alimentar</h3>
+            <p>Orientações oficiais do Ministério da Saúde sobre alimentação saudável para crianças.</p>
+            <a href="https://bvsms.saude.gov.br/bvs/publicacoes/guia_alimentar_populacao_brasileira_2ed.pdf" target="_blank" class="resource-link">Ver Guia Completo</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>UNICEF Brasil - Alimentação</h3>
+            <p>Recursos e informações sobre alimentação saudável na primeira infância.</p>
+            <a href="https://www.unicef.org/brazil/alimentacao-na-primeira-infancia" target="_blank" class="resource-link">Explorar Recursos</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>Fiocruz - Alimentação Infantil</h3>
+            <p>Artigos e pesquisas sobre nutrição infantil e desenvolvimento saudável.</p>
+            <a href="https://portal.fiocruz.br/busca?search_api_views_fulltext=alimenta%C3%A7%C3%A3o%20infantil" target="_blank" class="resource-link">Ver Artigos</a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 
