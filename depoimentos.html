@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depoimentos - CrescerBem</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilo para títulos principais */
+        .content-section h1,
+        .content-section h2,
+        section h2 {
+            text-align: center;
+            color: var(--heading-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .content-section h1::after,
+        .content-section h2::after,
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .depoimentos-section {
+            padding: 120px 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 100px;
+        }
+
+        .depoimento-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .depoimento-foto {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+
+        .depoimento-conteudo {
+            flex: 1;
+        }
+
+        .depoimento-texto {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .depoimento-autor {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .depoimento-data {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+
+        .galeria-fotos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .foto-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .foto-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .foto-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .foto-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .foto-card:hover .foto-info {
+            transform: translateY(0);
+        }
+
+        .compartilhar-section {
+            background: var(--gray-light);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .compartilhar-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .rating {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .rating i {
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .filtros {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filtro-btn {
+            background: var(--white);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filtro-btn.active, .filtro-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        @media screen and (max-width: 768px) {
+            .depoimento-card {
+                flex-direction: column;
+            }
+
+            .depoimento-foto {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        .saiba-mais {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .saiba-mais:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .depoimento-card {
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        .depoimento-card.hidden {
+            display: none;
+            opacity: 0;
+        }
+
+        .filtro-btn {
+            background: var(--white);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filtro-btn.active {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Estilo do Menu Superior */
+        .menu-superior {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-links {
+            display: flex;
+            gap: 2rem;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+
+        .menu-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Botão Voltar 3D */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, #FFE5F0, #FFD1E5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #E84393;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 
+                5px 5px 15px rgba(232, 67, 147, 0.2),
+                -5px -5px 15px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: linear-gradient(145deg, #FFD1E5, #FFB7D4);
+            color: #D63384;
+            box-shadow: 
+                8px 8px 20px rgba(232, 67, 147, 0.3),
+                -8px -8px 20px rgba(255, 255, 255, 0.9);
+        }
+
+        .back-button:active {
+            transform: translateY(0) scale(1);
+            box-shadow: inset 2px 2px 5px rgba(232, 67, 147, 0.2);
+        }
+
+        .back-button i {
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover i {
+            transform: rotate(-360deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Superior -->
+    <nav class="menu-superior">
+        <ul class="menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="desenvolvimento.html">Desenvolvimento</a></li>
+            <li><a href="alimentacao.html">Alimentação</a></li>
+            <li><a href="atividades.html">Atividades</a></li>
+            <li><a href="consulta.html">Consultas</a></li>
+            <li><a href="depoimentos.html">Depoimentos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- Botão Voltar 3D -->
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <main class="depoimentos-section">
+        <h1>Depoimentos e Momentos Especiais</h1>
+        <p class="subtitle">Histórias reais de famílias que fazem parte da nossa comunidade</p>
+
+        <div class="filtros">
+            <button class="filtro-btn active">Todos</button>
+            <button class="filtro-btn">Desenvolvimento</button>
+            <button class="filtro-btn">Alimentação</button>
+            <button class="filtro-btn">Atividades</button>
+            <button class="filtro-btn">Consultas</button>
+        </div>
+
+        <div class="galeria-fotos">
+            <!-- Desenvolvimento -->
+            <div class="foto-card" data-categoria="desenvolvimento">
+                <img src="imagens/bebe engatinhando.jpg" alt="Bebê aprendendo a engatinhar">
+                <div class="foto-info">
+                    <h3>Primeiro Engatinhar</h3>
+                    <p>Lucas, 7 meses</p>
+                    <a href="desenvolvimento.html" class="saiba-mais">Saiba mais sobre desenvolvimento</a>
+                </div>
+            </div>
+            <div class="foto-card" data-categoria="desenvolvimento">
+                <img src="imagens/bebe falando.jpg" alt="Bebê falando primeiras palavras">
+                <div class="foto-info">
+                    <h3>Primeiras Palavras</h3>
+                    <p>Sofia, 11 meses</p>
+                </div>
+            </div>
+
+            <!-- Alimentação -->
+            <div class="foto-card" data-categoria="alimentacao">
+                <img src="imagens/bebe comendo.jpg" alt="Bebê comendo papinha">
+                <div class="foto-info">
+                    <h3>Primeira Papinha</h3>
+                    <p>Miguel, 6 meses</p>
+                    <a href="alimentacao.html" class="saiba-mais">Dicas de alimentação</a>
+                </div>
+            </div>
+            <div class="foto-card" data-categoria="alimentacao">
+                <img src="imagens/alimentação saudavel.jpg" alt="Alimentação saudável">
+                <div class="foto-info">
+                    <h3>Alimentação Saudável</h3>
+                    <p>Família Oliveira</p>
+                </div>
+            </div>
+
+            <!-- Atividades -->
+            <div class="foto-card" data-categoria="atividades">
+                <img src="imagens/bebe brincando.jpg" alt="Bebê brincando">
+                <div class="foto-info">
+                    <h3>Brincadeiras Educativas</h3>
+                    <p>Laura, 1 ano</p>
+                    <a href="atividades.html" class="saiba-mais">Ver atividades</a>
+                </div>
+            </div>
+            <div class="foto-card" data-categoria="atividades">
+                <img src="imagens/musica.jpg" alt="Atividade musical">
+                <div class="foto-info">
+                    <h3>Música e Desenvolvimento</h3>
+                    <p>Turma do Berçário</p>
+                </div>
+            </div>
+
+            <!-- Consultas -->
+            <div class="foto-card" data-categoria="consultas">
+                <img src="imagens/aconhamento medico.jpg" alt="Consulta pediátrica">
+                <div class="foto-info">
+                    <h3>Acompanhamento Médico</h3>
+                    <p>Pedro, 3 meses</p>
+                    <a href="consulta.html" class="saiba-mais">Agende uma consulta</a>
+                </div>
+            </div>
+            <div class="foto-card" data-categoria="consultas">
+                <img src="imagens/Telemedicina.jpg" alt="Consulta online">
+                <div class="foto-info">
+                    <h3>Telemedicina</h3>
+                    <p>Atendimento à distância</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="depoimentos">
+            <!-- Depoimento Desenvolvimento -->
+            <div class="depoimento-card" data-categoria="desenvolvimento">
+                <img src="imagens/cute-family-have-fun-kitchen.jpg" alt="Família Silva" class="depoimento-foto">
+                <div class="depoimento-conteudo">
+                    <p class="depoimento-texto">"O acompanhamento do desenvolvimento do nosso filho com a equipe do CrescerBem foi fundamental. As orientações sobre estimulação precoce fizeram toda a diferença!"</p>
+                    <p class="depoimento-autor">Família Silva</p>
+                    <p class="depoimento-data">Pais do Lucas, 1 ano e 6 meses</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Depoimento Alimentação -->
+            <div class="depoimento-card" data-categoria="alimentacao">
+                <img src="imagens/portrait-beautiful-family.jpg" alt="Família Oliveira" class="depoimento-foto">
+                <div class="depoimento-conteudo">
+                    <p class="depoimento-texto">"As dicas de introdução alimentar foram essenciais! Nossa filha desenvolveu uma relação saudável com a comida desde cedo."</p>
+                    <p class="depoimento-autor">Família Oliveira</p>
+                    <p class="depoimento-data">Pais da Sofia, 1 ano</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Depoimento Atividades -->
+            <div class="depoimento-card" data-categoria="atividades">
+                <img src="imagens/young-family-with.jpg" alt="Família Santos" class="depoimento-foto">
+                <div class="depoimento-conteudo">
+                    <p class="depoimento-texto">"As atividades sugeridas são criativas e fáceis de fazer em casa. Nosso filho se desenvolveu muito com as brincadeiras educativas!"</p>
+                    <p class="depoimento-autor">Família Santos</p>
+                    <p class="depoimento-data">Pais do Miguel, 2 anos</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Depoimento Consultas -->
+            <div class="depoimento-card" data-categoria="consultas">
+                <img src="imagens/young-family.jpg" alt="Família Costa" class="depoimento-foto">
+                <div class="depoimento-conteudo">
+                    <p class="depoimento-texto">"O atendimento online é excelente! Conseguimos tirar todas as dúvidas com os especialistas sem sair de casa."</p>
+                    <p class="depoimento-autor">Família Costa</p>
+                    <p class="depoimento-data">Pais da Laura, 8 meses</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="compartilhar-section">
+            <h2>Compartilhe Sua História</h2>
+            <p>Inspire outras famílias compartilhando sua experiência com o CrescerBem</p>
+            
+            <form class="compartilhar-form">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="depoimento">Seu Depoimento</label>
+                    <textarea id="depoimento" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Adicionar Foto</label>
+                    <input type="file" id="foto" accept="image/*">
+                </div>
+                <button type="submit" class="submit-button">Compartilhar História</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Funcionalidade de filtro
+        const filtros = document.querySelectorAll('.filtro-btn');
+        const depoimentos = document.querySelectorAll('.depoimento-card');
+        const fotos = document.querySelectorAll('.foto-card');
+
+        filtros.forEach(filtro => {
+            filtro.addEventListener('click', () => {
+                // Remove classe active de todos os filtros
+                filtros.forEach(f => f.classList.remove('active'));
+                // Adiciona classe active ao filtro clicado
+                filtro.classList.add('active');
+
+                const categoria = filtro.textContent.toLowerCase();
+
+                // Filtra depoimentos
+                depoimentos.forEach(depoimento => {
+                    if (categoria === 'todos' || depoimento.dataset.categoria === categoria) {
+                        depoimento.classList.remove('hidden');
+                    } else {
+                        depoimento.classList.add('hidden');
+                    }
+                });
+
+                // Filtra fotos
+                fotos.forEach(foto => {
+                    if (categoria === 'todos' || foto.dataset.categoria === categoria) {
+                        foto.classList.remove('hidden');
+                    } else {
+                        foto.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Funcionalidade do formulário
+        document.querySelector('.compartilhar-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Obrigado por compartilhar sua história! Após revisão, ela será publicada em nosso site.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,47 @@
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  /* General Layout */
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  /* Carousel Adjustments */
+  .carousel {
+    height: 300px;
+  }
+  
+  .carousel-item {
+    height: 300px;
+  }
+
+  .carousel-controls {
+    padding: 0 10px;
+  }
+
+  /* Navigation */
+  .nav-menu {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Products Grid */
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  /* Buttons */
+  .btn {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

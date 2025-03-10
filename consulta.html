@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta Especializada - CrescerBem</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .content-section {
+            padding: 120px 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .resource-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .resource-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .resource-link {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .resource-link:hover {
+            background: var(--secondary-color);
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+    <main class="content-section">
+        <h1>Consulta Especializada</h1>
+        <p>Encontre profissionais especializados para auxiliar no desenvolvimento do seu filho.</p>
+
+        <div class="resource-card">
+            <h3>Sociedade Brasileira de Pediatria</h3>
+            <p>Encontre pediatras certificados em sua região.</p>
+            <a href="https://www.sbp.com.br/busca-pediatra/" target="_blank" class="resource-link">Buscar Pediatra</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>Conselho Federal de Psicologia</h3>
+            <p>Localize psicólogos especializados em desenvolvimento infantil.</p>
+            <a href="https://cadastro.cfp.org.br/cfp/pesquisa-psicologa-o/" target="_blank" class="resource-link">Encontrar Psicólogo</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>Conselho Federal de Fonoaudiologia</h3>
+            <p>Busque fonoaudiólogos para acompanhamento do desenvolvimento da fala.</p>
+            <a href="https://www.fonoaudiologia.org.br/cffa/index.php/consulta-profissional/" target="_blank" class="resource-link">Buscar Fonoaudiólogo</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>Conselho Federal de Nutrição</h3>
+            <p>Encontre nutricionistas especializados em nutrição infantil.</p>
+            <a href="https://www.cfn.org.br/index.php/consulta-nutricionista/" target="_blank" class="resource-link">Localizar Nutricionista</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>Telemedicina e Consultas Online</h3>
+            <p>Plataformas de telemedicina para consultas online com especialistas.</p>
+            <a href="https://conexasaude.com.br/" target="_blank" class="resource-link">Agendar Consulta Online</a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 

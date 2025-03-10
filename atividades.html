@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades Educativas - CrescerBem</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .content-section {
+            padding: 120px 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .resource-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .resource-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .resource-link {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .resource-link:hover {
+            background: var(--secondary-color);
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+    <main class="content-section">
+        <h1>Atividades Educativas</h1>
+        <p>Descubra brincadeiras e jogos educativos para estimular o desenvolvimento do seu filho.</p>
+
+        <div class="resource-card">
+            <h3>Nova Escola - Atividades</h3>
+            <p>Banco de atividades educativas para diferentes faixas etárias.</p>
+            <a href="https://novaescola.org.br/plano-de-aula" target="_blank" class="resource-link">Explorar Atividades</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>SmartKids</h3>
+            <p>Portal com jogos educativos, atividades e passatempos para crianças.</p>
+            <a href="https://www.smartkids.com.br/" target="_blank" class="resource-link">Acessar Portal</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>Escola Games</h3>
+            <p>Jogos educativos online gratuitos para crianças.</p>
+            <a href="http://www.escolagames.com.br/" target="_blank" class="resource-link">Jogar Agora</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>Tempojunto</h3>
+            <p>Blog com ideias de brincadeiras e atividades para fazer em família.</p>
+            <a href="https://tempojunto.com/" target="_blank" class="resource-link">Ver Atividades</a>
+        </div>
+
+        <div class="resource-card">
+            <h3>Khan Academy Kids</h3>
+            <p>Plataforma gratuita de educação com atividades para crianças.</p>
+            <a href="https://learn.khanacademy.org/khan-academy-kids/" target="_blank" class="resource-link">Começar a Aprender</a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 
